@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-##This is a comment!!
-
 gem 'rails', '4.2.5'
 
 gem 'sqlite3'
