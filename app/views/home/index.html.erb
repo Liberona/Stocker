@@ -1,2 +1,25 @@
-<h1>Robot Bursatil RoR</h1>
-<p>Hello! Cuánto quiere invertir?</p>
+
+<%= form_tag root_path, :method => 'POST' do %>
+      <%= text_field_tag 'id', nil, placeholder: 'Enter Company Ticket Symbol', size: 50%>
+      <%= submit_tag "Lookup Stock Quote", class: "btn btn-primary" %>
+<% end %>
+
+<%# stock = StockQuote::Stock.quote("tsla") %>
+<%# stock = StockQuote::Stock.stats("tsla") %>
+
+<% if @stock %>
+    <%= @stock.company_name %>
+    <br/>
+    <strong>Company Name: </strong><%= @stock.company_name %> - <%= @stock.symbol %><br/>
+    <br/>
+    <%= @stock.inspect %>
+    <br/>
+    <%= @stock_stats.inspect %>
+
+<%elsif @nothing %>
+    <%= @nothing %>
+<% end %>
+
+<%if @error %>
+    <%= @error %>
+<% end %>
