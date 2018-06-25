@@ -1,0 +1,39 @@
+ <% begin %>
+    <% @stock_quote = StockQuote::Stock.quote(@stock.ticker) %>
+    <% @stock_company = StockQuote::Stock.company(@stock.ticker) %>
+<% rescue StandardError %>
+
+<% end %>
+
+<p>
+  <strong>Ticker:</strong>
+  <%= @stock.ticker %>
+</p>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><strong><%= @stock_quote.company_name %> - <%= @stock_quote.symbol %></strong></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-4">
+    <h1>$<strong></strong><%= @stock_quote.open %></h1><br/>
+    <br/>
+    <strong>Primary Exchange: </strong><%= @stock_quote.primary_exchange %><br/>
+    <strong>Sector: </strong><%= @stock_quote.sector %><br/>
+    <strong>Calculation Price: </strong><%= @stock_quote.calculation_price %><br/>
+    <strong>Open: </strong><%= @stock_quote.open %><br/>
+    <strong>Open Time: </strong><%= @stock_quote.open_time %> <br/>
+    <strong>Close: </strong><%= @stock_quote.close %><br/>
+    <strong>Close Time: </strong><%= @stock_quote.close_time %><br/>
+    </div>
+    
+    <div class="col-md-8"><br/><br/><br/><br/><br/><br/>
+    <p align="justify"><%= @stock_company.description %></p><br/>
+    </div>
+  </div>
+  <div class="panel-footer">
+<%= link_to 'Edit', edit_stock_path(@stock)%> |
+<%= link_to 'Remove Stock', stock_path(@stock), method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', stocks_path %></div>
+</div>

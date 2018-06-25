@@ -1,20 +1,31 @@
-
-<%= form_tag root_path, :method => 'POST' do %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Stock Quote Lookup</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_tag root_path, :method => 'POST' do %>
       <%= text_field_tag 'id', nil, placeholder: 'Enter Company Ticket Symbol', size: 50%>
       <%= submit_tag "Lookup Stock Quote", class: "btn btn-primary" %>
-<% end %>
+    <% end %>
+  </div>
+</div>
 
-<%# stock = StockQuote::Stock.quote("tsla") %>
-<%# stock = StockQuote::Stock.stats("tsla") %>
 
 <% if @stock %>
     <%= @stock.company_name %>
     <br/>
+    <br/>
     <strong>Company Name: </strong><%= @stock.company_name %> - <%= @stock.symbol %><br/>
+    <strong>Primary Exchange: </strong><%= @stock.primary_exchange %><br/>
+    <strong>Sector: </strong><%= @stock.sector %><br/>
+    <strong>Calculation Price: </strong><%= @stock.calculation_price %><br/>
+    <strong>Open: </strong><%= @stock.open %><br/>
+    <strong>Open Time: </strong><%= @stock.open_time %> <br/>
+    <strong>Close: </strong><%= @stock.close %><br/>
+    <strong>Close Time: </strong><%= @stock.close_time %><br/>
     <br/>
-    <%= @stock.inspect %>
+    <%= @stock.inspect %><br/>
     <br/>
-    <%= @stock_stats.inspect %>
 
 <%elsif @nothing %>
     <%= @nothing %>
@@ -23,3 +34,5 @@
 <%if @error %>
     <%= @error %>
 <% end %>
+
+    
