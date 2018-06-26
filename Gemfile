@@ -8,7 +8,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-#BootStrap Sass para estilizar la pagina
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'stock_quote', '~> 2.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
@@ -20,6 +19,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '~> 1.0'
+  gem 'pg', '~> 0.21.0'
   gem 'rails_12factor', '~> 0.0.3'
 end
